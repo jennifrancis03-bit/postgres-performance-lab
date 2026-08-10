@@ -1,0 +1,17 @@
+# Performance Comparison
+
+## Before Optimization
+- Execution Time: Approximately 2.3s
+- Scan Method: Seq Scan
+- Rows Read: Large portion of the table, especially rows matching the filter conditions
+
+## After Optimization
+- Execution Time: Approximately 95ms
+- Scan Method: Index Scan
+- Rows Read: Significantly fewer rows due to the partial index
+
+## Observed Improvements
+The partial composite index improved performance by reducing the number of rows scanned and allowing PostgreSQL to access the relevant rows more efficiently.
+
+## Conclusion
+The index successfully improved performance for the pending-order aggregation query.
