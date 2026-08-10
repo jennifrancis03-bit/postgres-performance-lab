@@ -1,0 +1,13 @@
+# Isolation Level Results
+
+## What Session 1 Observed
+In `READ COMMITTED`, Session 1 sees the latest committed row version at the moment each statement is executed. If Session 2 updates the row and commits, Session 1 may see the new value on a later read within the same transaction.
+
+## What Session 2 Changed
+Session 2 updates the row and commits the change. This creates a new committed version of the row visible to subsequent statements.
+
+## Why the Behavior Differs
+`READ COMMITTED` re-evaluates the row version for each statement, while `REPEATABLE READ` preserves the row snapshot taken at the start of the transaction. As a result, `REPEATABLE READ` prevents later reads from seeing a different committed version within the same transaction.
+
+## Notes
+If available, include screenshots or terminal excerpts from the two sessions here.
